@@ -16,14 +16,34 @@
         <p>{{ @fruit }}</p>
     </repeat>
 
-    <h3>links</h3>
+    <h2>links</h2>
     <repeat group="{{ @bookmarks }}" value="{{ @bookmark }}">
         <p><a href = "{{ @bookmark }}"> {{ @bookmark }}</a></p>
     </repeat>
 
-    <h4>Dessert Options</h4>
+    <h2>Dessert Options</h2>
         <repeat group="{{ @desserts }}" key= "{{ @id }}" value="{{ @text }}">
             <input type="checkbox" value="{{ @id }}">{{ @text }}<br>
         </repeat>
+
+    <h2>Conditional content</h2>
+    <check if="{{ @preferredCustomer }}">
+        <true>
+            <strong>Thank you!</strong>
+        </true>
+        <false>
+            <strong>You're missing out</strong>
+        </false>
+    </check>
+
+    <check if="{{ @lastLogin > strtotime('-1 month') }}">
+        <true>
+            <p>Welcome Back!</p>
+        </true>
+        <false>
+            <p>Its been awhile</p>
+        </false>
+    </check>
+
 </body>
 </html>
