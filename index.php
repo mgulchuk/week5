@@ -14,8 +14,21 @@ require_once("vendor/autoload.php");
 $f3 = Base::instance();
 
 // Default route
-$f3->route('GET /', function()
+$f3->route('GET /', function($f3)
 {
+    // create variables in the f3 hive
+    $f3->set('username', 'jshmo');
+    $f3->set('password', sha1('Password01'));
+    $f3->set('title', 'working with templates');
+    $f3->set('color', 'purple');
+    $f3->set('radius', '10');
+
+    $f3->set('fruits', array('apple', 'orange', 'banana'));
+
+    $f3->set('bookmarks', array('https://www.cnet.com', 'https://www.reddit.com/r/news', 'https://edition.cnn.com/sport'));
+
+    $f3->set('desserts', array("chocolate"=>"Chocolate Mousse", "vanilla"=>"Vanilla Custard", "strawberry"=>"Strawberry Shortcake"));
+
     $view = new Template();
     echo $view->render('views/info.html');
 });
